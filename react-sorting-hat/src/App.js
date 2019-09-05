@@ -3,14 +3,29 @@ import Hat from "./assets/the_sorting_hat_by_sahinduezguen.png";
 import "./App.scss";
 import Welcome from "./components/Welcome";
 import Questions from "./components/questions/Questions";
+import Results from "./components/Results";
+
+const initialState = {
+  count: 0,
+  questions: false,
+  answers: {},
+  results: {},
+  show: {
+    1: true,
+    2: false,
+    3: false,
+    4: false,
+    5: false,
+    6: false
+  },
+  showResults: false
+};
 
 class App extends Component {
   constructor() {
     super();
     this.state = {
-      count: 0,
-      answers: {},
-      results: {}
+      ...initialState
     };
     this.enterRef = React.createRef();
   }
@@ -23,6 +38,12 @@ class App extends Component {
     this.enterRef.current.classList = "exitRef";
   };
 
+  handleWelcomeClick = () => {
+    this.setState({
+      questions: !this.state.questions
+    });
+  };
+
   handleAnswerChange = (e, set) => {
     this.setState({
       answers: {
@@ -32,7 +53,7 @@ class App extends Component {
     });
   };
 
-  handleSubmit = (e, set) => {
+  handleSubmit = (e, set, id) => {
     e.preventDefault();
 
     let updatedCount = this.state.count;
@@ -61,52 +82,97 @@ class App extends Component {
       default:
         return null;
     }
+
+    this.setState({
+      show: {
+        ...this.state.show,
+        [id]: !this.state.show[id],
+        [id + 1]: !this.state.show[id + 1]
+      }
+    });
   };
 
-  handleResults = () => {
-    switch (this.state.count) {
-      case this.state.count < 13:
+  handleResults = (e, set, id) => {
+    e.preventDefault();
+
+    let updatedCount = this.state.count;
+
+    switch (this.state.answers[set]) {
+      case "a":
         this.setState({
-          results: {
-            team: "Team 1",
-            traits: ["one", "two", "three"],
-            popular: "Most Popular Character"
-          }
+          count: (updatedCount += 1)
         });
         break;
-      case 12 < this.state.count < 17:
+      case "b":
         this.setState({
-          results: {
-            team: "Team 2",
-            traits: ["one", "two", "three"],
-            popular: "Most Popular Character"
-          }
+          count: (updatedCount += 2)
         });
         break;
-      case 16 < this.state.count < 21:
+      case "c":
         this.setState({
-          results: {
-            team: "Team 3",
-            traits: ["one", "two", "three"],
-            popular: "Most Popular Character"
-          }
+          count: (updatedCount += 3)
         });
         break;
-      case this.state.count > 20:
+      case "d":
         this.setState({
-          results: {
-            team: "Team 4",
-            traits: ["one", "two", "three"],
-            popular: "Most Popular Character"
-          }
+          count: (updatedCount += 4)
         });
         break;
       default:
         return null;
     }
+
+    if (updatedCount < 13) {
+      this.setState({
+        results: {
+          team: "Team 1",
+          traits: ["one", "two", "three"],
+          popular: "Most Popular Character"
+        }
+      });
+    } else if (12 < updatedCount && updatedCount < 17) {
+      this.setState({
+        results: {
+          team: "Team 2",
+          traits: ["one", "two", "three"],
+          popular: "Most Popular Character"
+        }
+      });
+    } else if (16 < updatedCount && updatedCount < 21) {
+      this.setState({
+        results: {
+          team: "Team 3",
+          traits: ["one", "two", "three"],
+          popular: "Most Popular Character"
+        }
+      });
+    } else if (updatedCount > 20) {
+      this.setState({
+        results: {
+          team: "Team 4",
+          traits: ["one", "two", "three"],
+          popular: "Most Popular Character"
+        }
+      });
+    } else {
+      return null;
+    }
+
+    this.setState({
+      show: {
+        ...this.state.show,
+        [id]: !this.state.show[id],
+        [id + 1]: !this.state.show[id + 1]
+      },
+      showResults: true
+    });
   };
 
-  // setCount =
+  handleReset = () => {
+    this.setState({
+      ...initialState
+    });
+  };
 
   componentDidUpdate(prevProps, prevState) {
     console.log(prevState);
@@ -120,26 +186,25 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        {/* <Welcome
-          onMouseEnter={this.handleHoverEnter}
-          onMouseLeave={this.handleHoverLeave}
-          hat={Hat}
-          ref={this.enterRef}
-        /> */}
-
-        <Questions
-          count={this.state.count}
-          answers={this.state.answers}
-          onChange={this.handleAnswerChange}
-          onSubmit={this.handleSubmit}
-        />
-        <button onClick={this.handleResults}>Results</button>
-        {this.state.results && (
-          <ul>
-            <li>{this.state.results.team}</li>
-            <li>{this.state.results.traits}</li>
-            <li>{this.state.results.popular}</li>
-          </ul>
+        {!this.state.questions ? (
+          <Welcome
+            onMouseEnter={this.handleHoverEnter}
+            onMouseLeave={this.handleHoverLeave}
+            hat={Hat}
+            ref={this.enterRef}
+            onClick={this.handleWelcomeClick}
+          />
+        ) : !this.state.showResults ? (
+          <Questions
+            count={this.state.count}
+            answers={this.state.answers}
+            onChange={this.handleAnswerChange}
+            onSubmit={this.handleSubmit}
+            show={this.state.show}
+            onClick={this.handleResults}
+          />
+        ) : (
+          <Results onClick={this.handleReset} results={this.state.results} />
         )}
       </div>
     );
