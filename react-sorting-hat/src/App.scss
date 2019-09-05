@@ -1,0 +1,63 @@
+.App {
+  text-align: center;
+  // height: 100vh;
+  // width: 100vw;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  overflow: auto;
+}
+
+.welcome-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.sorting-hat {
+  // cursor: pointer;
+  transition: all 0.4s ease;
+}
+
+.sorting-hat:hover {
+  transform: translateY(-24px);
+}
+
+.enterRef {
+  display: block;
+  color: goldenrod;
+  animation: expand 0.4s ease;
+}
+
+@keyframes expand {
+  from {
+    transform: scale(0);
+    opacity: 0;
+  }
+}
+
+.exitRef {
+  display: none;
+}
+
+button {
+  background-color: transparent !important;
+  border: 1px solid goldenrod;
+  cursor: pointer;
+  margin: auto;
+  padding: 8px 24px;
+  border-radius: 8px;
+
+  transition: all 0.2s ease;
+
+  &:hover {
+    background-color: goldenrod !important;
+    color: #fff;
+  }
+}
+
+li {
+  list-style: none;
+}
