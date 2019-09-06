@@ -4,6 +4,10 @@ import "./App.scss";
 import Welcome from "./components/Welcome";
 import Questions from "./components/questions/Questions";
 import Results from "./components/Results";
+import Hufflepuff from "./assets/hufflepuff-crest.png";
+import Ravenclaw from "./assets/ravenclaw-crest.png";
+import Slytherin from "./assets/slytherin-crest.png";
+import Gryffindor from "./assets/gryffindor-crest.png";
 
 const initialState = {
   count: 0,
@@ -28,6 +32,7 @@ class App extends Component {
       ...initialState
     };
     this.enterRef = React.createRef();
+    this.appRef = React.createRef();
   }
 
   handleHoverEnter = () => {
@@ -97,6 +102,9 @@ class App extends Component {
 
     let updatedCount = this.state.count;
 
+    // Have to update count again as the last question only has
+    // one submit button so user can click once and get their answer
+    // instead of click button to update then click button for results
     switch (this.state.answers[set]) {
       case "a":
         this.setState({
@@ -122,38 +130,50 @@ class App extends Component {
         return null;
     }
 
-    if (updatedCount < 13) {
+    if (updatedCount < 12) {
       this.setState({
         results: {
-          team: "Team 1",
-          traits: ["one", "two", "three"],
-          popular: "Most Popular Character"
+          team: "Hufflepuff House",
+          traits: ["Dedicated", " hard workers", " loyal"],
+          popular: "Newt Scamander",
+          colours: ["yellow", "black"],
+          crest: Hufflepuff
         }
       });
-    } else if (12 < updatedCount && updatedCount < 17) {
+      this.appRef.current.classList = "App App_team--1";
+    } else if (11 < updatedCount && updatedCount < 17) {
       this.setState({
         results: {
-          team: "Team 2",
-          traits: ["one", "two", "three"],
-          popular: "Most Popular Character"
+          team: "Ravenclaw House",
+          traits: ["intelligent", " witty "],
+          popular: "Gilderoy Lockheart",
+          colours: ["blue", "#cd7f32"],
+          crest: Ravenclaw
         }
       });
+      this.appRef.current.classList = "App App_team--2";
     } else if (16 < updatedCount && updatedCount < 21) {
       this.setState({
         results: {
-          team: "Team 3",
-          traits: ["one", "two", "three"],
-          popular: "Most Popular Character"
+          team: "Slytherin House",
+          traits: ["cunning", " ambitious", " resourceful"],
+          popular: "Lord Voldemort",
+          colours: ["emerald", "silver"],
+          crest: Slytherin
         }
       });
+      this.appRef.current.classList = "App App_team--3";
     } else if (updatedCount > 20) {
       this.setState({
         results: {
-          team: "Team 4",
-          traits: ["one", "two", "three"],
-          popular: "Most Popular Character"
+          team: "Gryffindor House",
+          traits: ["Bravery", " daring", " chivalry"],
+          popular: "Albus Dumbledore & Harry Potter",
+          colours: ["scarlet", "gold"],
+          crest: Gryffindor
         }
       });
+      this.appRef.current.classList = "App App_team--4";
     } else {
       return null;
     }
@@ -172,20 +192,12 @@ class App extends Component {
     this.setState({
       ...initialState
     });
+    this.appRef.current.classList = "App";
   };
-
-  componentDidUpdate(prevProps, prevState) {
-    console.log(prevState);
-  }
-
-  componentDidMount() {
-    // console.log(this.enterRef);
-    console.log(this.state.answers);
-  }
 
   render() {
     return (
-      <div className="App">
+      <div className="App" ref={this.appRef}>
         {!this.state.questions ? (
           <Welcome
             onMouseEnter={this.handleHoverEnter}
