@@ -1,162 +1,163 @@
 export const QuestionsModel = [
   {
     id: 1,
-    question: "Question 1?",
+    question: "What is your favourite colour?",
     set: "one",
     answers: [
       {
         value: "a",
-        answer: "a) answer 1",
+        answer: "Yellow",
         count: 1
       },
       {
         value: "b",
-        answer: "b) answer 2",
+        answer: "Blue",
         count: 2
       },
       {
         value: "c",
-        answer: "c) answer 3",
+        answer: "Green",
         count: 3
       },
       {
         value: "d",
-        answer: "d) answer 4",
+        answer: "Red",
         count: 4
       }
     ]
   },
   {
     id: 2,
-    question: "Question 2?",
+    question: "Who is your favourite Character?",
     set: "two",
     answers: [
       {
         value: "a",
-        answer: "a) answer 1",
+        answer: "Newt Scamander",
         count: 1
       },
       {
         value: "b",
-        answer: "b) answer 2",
+        answer: "Gilderoy Lockheart",
         count: 2
       },
       {
         value: "c",
-        answer: "c) answer 3",
+        answer: "Lord Voldemort",
         count: 3
       },
       {
         value: "d",
-        answer: "d) answer 4",
+        answer: "Harry Potter",
         count: 4
       }
     ]
   },
   {
     id: 3,
-    question: "Question 3?",
+    question: "What trait best describes you?",
     set: "three",
     answers: [
       {
         value: "a",
-        answer: "a) answer 1",
+        answer: "Loyal",
         count: 1
       },
       {
         value: "b",
-        answer: "b) answer 2",
+        answer: "Witty",
         count: 2
       },
       {
         value: "c",
-        answer: "c) answer 3",
+        answer: "Ambitious",
         count: 3
       },
       {
         value: "d",
-        answer: "d) answer 4",
+        answer: "Bravery",
         count: 4
       }
     ]
   },
   {
     id: 4,
-    question: "Question 4?",
+    question:
+      "What is your second favourite colour out of the below selection?",
     set: "four",
     answers: [
       {
         value: "a",
-        answer: "a) answer 1",
+        answer: "Black",
         count: 1
       },
       {
         value: "b",
-        answer: "b) answer 2",
+        answer: "Bronze",
         count: 2
       },
       {
         value: "c",
-        answer: "c) answer 3",
+        answer: "Silver",
         count: 3
       },
       {
         value: "d",
-        answer: "d) answer 4",
+        answer: "Gold",
         count: 4
       }
     ]
   },
   {
     id: 5,
-    question: "Question 5?",
+    question: "Who's house story do you enjoy the most?",
     set: "five",
     answers: [
       {
         value: "a",
-        answer: "a) answer 1",
+        answer: "Helga Hufflepuff",
         count: 1
       },
       {
         value: "b",
-        answer: "b) answer 2",
+        answer: "Rowena Ravenclaw",
         count: 2
       },
       {
         value: "c",
-        answer: "c) answer 3",
+        answer: "Salazar Slytherin",
         count: 3
       },
       {
         value: "d",
-        answer: "d) answer 4",
+        answer: "Godric Gryffindor",
         count: 4
       }
     ]
   },
   {
     id: 6,
-    question: "Question 6?",
+    question: "What is another trait that best describes you?",
     set: "six",
     answers: [
       {
         value: "a",
-        answer: "a) answer 1",
+        answer: "Dedicated",
         count: 1
       },
       {
         value: "b",
-        answer: "b) answer 2",
+        answer: "Intelligent",
         count: 2
       },
       {
         value: "c",
-        answer: "c) answer 3",
+        answer: "Resourceful",
         count: 3
       },
       {
         value: "d",
-        answer: "d) answer 4",
+        answer: "Daring",
         count: 4
       }
     ]

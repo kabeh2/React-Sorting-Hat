@@ -85,7 +85,8 @@ const Questions = props => {
             >
               {question.id === 6 ? "Submit" : "Next"}
             </button>
-            <h1>{`Updated Count: ${props.count}`}</h1>
+            {/* Below code is to help calculate total count of each answer */}
+            {/* <h1>{`Updated Count: ${props.count}`}</h1> */}
           </form>
         </div>
       );
