@@ -1,13 +1,11 @@
 import React, { Component } from "react";
+import { Switch, Route, Redirect } from "react-router-dom";
 import Hat from "./assets/the_sorting_hat_by_sahinduezguen.png";
 import "./App.scss";
 import Welcome from "./components/Welcome";
-import Questions from "./components/questions/Questions";
+import Questions from "./components/Questions";
 import Results from "./components/Results";
-import Hufflepuff from "./assets/hufflepuff-crest.png";
-import Ravenclaw from "./assets/ravenclaw-crest.png";
-import Slytherin from "./assets/slytherin-crest.png";
-import Gryffindor from "./assets/gryffindor-crest.png";
+import { ResultsModel } from "./components/models/ResultsModel";
 
 const initialState = {
   count: 0,
@@ -132,47 +130,27 @@ class App extends Component {
 
     if (updatedCount < 12) {
       this.setState({
-        results: {
-          team: "Hufflepuff House",
-          traits: ["Dedicated", " hard workers", " loyal"],
-          popular: "Newt Scamander",
-          colours: ["yellow", "black"],
-          crest: Hufflepuff
-        }
+        results: ResultsModel.Hufflepuff
       });
+      // Change styling to selected team colours
       this.appRef.current.classList = "App App_team--1";
     } else if (11 < updatedCount && updatedCount < 17) {
       this.setState({
-        results: {
-          team: "Ravenclaw House",
-          traits: ["intelligent", " witty "],
-          popular: "Gilderoy Lockheart",
-          colours: ["blue", "#cd7f32"],
-          crest: Ravenclaw
-        }
+        results: ResultsModel.Ravenclaw
       });
+      // Change styling to selected team colours
       this.appRef.current.classList = "App App_team--2";
     } else if (16 < updatedCount && updatedCount < 21) {
       this.setState({
-        results: {
-          team: "Slytherin House",
-          traits: ["cunning", " ambitious", " resourceful"],
-          popular: "Lord Voldemort",
-          colours: ["emerald", "silver"],
-          crest: Slytherin
-        }
+        results: ResultsModel.Slytherin
       });
+      // Change styling to selected team colours
       this.appRef.current.classList = "App App_team--3";
     } else if (updatedCount > 20) {
       this.setState({
-        results: {
-          team: "Gryffindor House",
-          traits: ["Bravery", " daring", " chivalry"],
-          popular: "Albus Dumbledore & Harry Potter",
-          colours: ["scarlet", "gold"],
-          crest: Gryffindor
-        }
+        results: ResultsModel.Gryffindor
       });
+      // Change styling to selected team colours
       this.appRef.current.classList = "App App_team--4";
     } else {
       return null;
@@ -198,26 +176,35 @@ class App extends Component {
   render() {
     return (
       <div className="App" ref={this.appRef}>
-        {!this.state.questions ? (
-          <Welcome
-            onMouseEnter={this.handleHoverEnter}
-            onMouseLeave={this.handleHoverLeave}
-            hat={Hat}
-            ref={this.enterRef}
-            onClick={this.handleWelcomeClick}
-          />
-        ) : !this.state.showResults ? (
-          <Questions
-            count={this.state.count}
-            answers={this.state.answers}
-            onChange={this.handleAnswerChange}
-            onSubmit={this.handleSubmit}
-            show={this.state.show}
-            onClick={this.handleResults}
-          />
-        ) : (
-          <Results onClick={this.handleReset} results={this.state.results} />
-        )}
+        <Switch>
+          {!this.state.questions ? (
+            <Route
+              path="/welcome"
+              render={props => (
+                <Welcome
+                  onMouseEnter={this.handleHoverEnter}
+                  onMouseLeave={this.handleHoverLeave}
+                  hat={Hat}
+                  ref={this.enterRef}
+                  onClick={this.handleWelcomeClick}
+                  {...props}
+                />
+              )}
+            />
+          ) : !this.state.showResults ? (
+            <Questions
+              count={this.state.count}
+              answers={this.state.answers}
+              onChange={this.handleAnswerChange}
+              onSubmit={this.handleSubmit}
+              show={this.state.show}
+              onClick={this.handleResults}
+            />
+          ) : (
+            <Results onClick={this.handleReset} results={this.state.results} />
+          )}
+          <Redirect to="/welcome" />
+        </Switch>
       </div>
     );
   }
