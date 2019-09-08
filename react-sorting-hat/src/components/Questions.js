@@ -1,5 +1,5 @@
 import React from "react";
-import { QuestionsModel } from "./QuestionsModel";
+import { QuestionsModel } from "./models/QuestionsModel";
 
 const Questions = props => {
   let questionsArr = QuestionsModel.map(question => {
@@ -93,14 +93,7 @@ const Questions = props => {
       return null;
     }
   });
-  return (
-    <>
-      {questionsArr}
-      {/* <button type="submit" onSubmit={(e) => props.onSubmit(e, set)}>
-        Make your choice
-      </button> */}
-    </>
-  );
+  return <>{questionsArr}</>;
 };
 
 export default Questions;

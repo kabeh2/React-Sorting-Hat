@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 const Welcome = React.forwardRef((props, ref) => {
   return (
@@ -10,9 +11,11 @@ const Welcome = React.forwardRef((props, ref) => {
         onMouseLeave={props.onMouseLeave}
       >
         <img className="sorting-hat" src={props.hat} alt="Sorting Hat" />
-        <button className="exitRef btn" ref={ref} onClick={props.onClick}>
-          <h2>Click to Find Out Your House...</h2>
-        </button>
+        <Link to={`/questions/${props.location.key}`}>
+          <button className="exitRef btn" ref={ref} onClick={props.onClick}>
+            <h2>Click to Find Out Your House...</h2>
+          </button>
+        </Link>
       </div>
     </div>
   );
