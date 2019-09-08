@@ -139,3 +139,10 @@ ul {
   padding: 24px;
   border-radius: 8px;
 }
+
+.social-container {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  margin-bottom: 16px;
+}
