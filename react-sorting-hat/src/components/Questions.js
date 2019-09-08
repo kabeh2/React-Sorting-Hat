@@ -17,7 +17,7 @@ const Questions = ({ show, answers, onClick, onSubmit, onChange }) => {
                 : e => onSubmit(e, question.set, question.id)
             }
           >
-            <ul>
+            <ul className="answer-container">
               {question.answers.map(answer => {
                 return (
                   <li>
