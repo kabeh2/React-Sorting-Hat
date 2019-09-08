@@ -1,9 +1,9 @@
 import React from "react";
 import { QuestionsModel } from "./models/QuestionsModel";
 
-const Questions = props => {
+const Questions = ({ show, answers, onClick, onSubmit, onChange }) => {
   let questionsArr = QuestionsModel.map(question => {
-    if (props.show[question.id] && question.id) {
+    if (show[question.id] && question.id) {
       return (
         <div
           className={`question-container question-container-${question.id}`}
@@ -13,11 +13,11 @@ const Questions = props => {
           <form
             onSubmit={
               question.id === 6
-                ? e => props.onClick(e, question.set, question.id)
-                : e => props.onSubmit(e, question.set, question.id)
+                ? e => onClick(e, question.set, question.id)
+                : e => onSubmit(e, question.set, question.id)
             }
           >
-            <ul>
+            <ul className="answer-container">
               {question.answers.map(answer => {
                 return (
                   <li>
@@ -26,8 +26,8 @@ const Questions = props => {
                         name="radioGroup"
                         type="radio"
                         value={answer.value}
-                        checked={props.answers[question.set] === answer.value}
-                        onChange={e => props.onChange(e, question.set)}
+                        checked={answers[question.set] === answer.value}
+                        onChange={e => onChange(e, question.set)}
                       />
                       {answer.answer}
                     </label>
@@ -38,7 +38,7 @@ const Questions = props => {
 
             <button
               type="submit"
-              disabled={props.answers[question.set] ? false : true}
+              disabled={answers[question.set] ? false : true}
             >
               {question.id === 6 ? "Submit" : "Next"}
             </button>
