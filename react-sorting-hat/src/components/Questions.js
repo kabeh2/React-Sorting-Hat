@@ -18,65 +18,22 @@ const Questions = props => {
             }
           >
             <ul>
-              <li>
-                <label>
-                  <input
-                    name="radioGroup"
-                    type="radio"
-                    value="a"
-                    checked={
-                      props.answers[question.set] === question.answers[0].value
-                    }
-                    onChange={e => props.onChange(e, question.set)}
-                  />
-                  {question.answers[0].answer}
-                </label>
-              </li>
-
-              <li>
-                <label>
-                  <input
-                    name="radioGroup"
-                    type="radio"
-                    value="b"
-                    checked={
-                      props.answers[question.set] === question.answers[1].value
-                    }
-                    onChange={e => props.onChange(e, question.set)}
-                  />
-                  {question.answers[1].answer}
-                </label>
-              </li>
-
-              <li>
-                <label>
-                  <input
-                    name="radioGroup"
-                    type="radio"
-                    value="c"
-                    checked={
-                      props.answers[question.set] === question.answers[2].value
-                    }
-                    onChange={e => props.onChange(e, question.set)}
-                  />
-                  {question.answers[2].answer}
-                </label>
-              </li>
-
-              <li>
-                <label>
-                  <input
-                    name="radioGroup"
-                    type="radio"
-                    value="d"
-                    checked={
-                      props.answers[question.set] === question.answers[3].value
-                    }
-                    onChange={e => props.onChange(e, question.set)}
-                  />
-                  {question.answers[3].answer}
-                </label>
-              </li>
+              {question.answers.map(answer => {
+                return (
+                  <li>
+                    <label>
+                      <input
+                        name="radioGroup"
+                        type="radio"
+                        value={answer.value}
+                        checked={props.answers[question.set] === answer.value}
+                        onChange={e => props.onChange(e, question.set)}
+                      />
+                      {answer.answer}
+                    </label>
+                  </li>
+                );
+              })}
             </ul>
 
             <button
