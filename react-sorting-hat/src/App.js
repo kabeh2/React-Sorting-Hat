@@ -174,10 +174,19 @@ class App extends Component {
   };
 
   render() {
+    const {
+      questions,
+      showResults,
+      count,
+      answers,
+      show,
+      results
+    } = this.state;
+
     return (
       <div className="App" ref={this.appRef}>
         <Switch>
-          {!this.state.questions ? (
+          {!questions ? (
             <Route
               path="/welcome"
               render={props => (
@@ -191,17 +200,17 @@ class App extends Component {
                 />
               )}
             />
-          ) : !this.state.showResults ? (
+          ) : !showResults ? (
             <Questions
-              count={this.state.count}
-              answers={this.state.answers}
+              count={count}
+              answers={answers}
               onChange={this.handleAnswerChange}
               onSubmit={this.handleSubmit}
-              show={this.state.show}
+              show={show}
               onClick={this.handleResults}
             />
           ) : (
-            <Results onClick={this.handleReset} results={this.state.results} />
+            <Results onClick={this.handleReset} results={results} />
           )}
           <Redirect to="/welcome" />
         </Switch>
