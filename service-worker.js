@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/4.3.1/workbox-sw.js");
 
 importScripts(
-  "/React-Sorting-Hat/precache-manifest.03364a47226274495aec5e6eae9b9f14.js"
+  "/React-Sorting-Hat/precache-manifest.aac42382c7213d4c4c7eb2d51673556a.js"
 );
 
 self.addEventListener('message', (event) => {
