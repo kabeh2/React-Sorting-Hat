@@ -1,0 +1,20 @@
+{
+  "files": {
+    "main.css": "/react-sorting-hat/static/css/main.63a40524.chunk.css",
+    "main.js": "/react-sorting-hat/static/js/main.d5ebc28c.chunk.js",
+    "main.js.map": "/react-sorting-hat/static/js/main.d5ebc28c.chunk.js.map",
+    "runtime~main.js": "/react-sorting-hat/static/js/runtime~main.84ea3b92.js",
+    "runtime~main.js.map": "/react-sorting-hat/static/js/runtime~main.84ea3b92.js.map",
+    "static/js/2.0542a6e8.chunk.js": "/react-sorting-hat/static/js/2.0542a6e8.chunk.js",
+    "static/js/2.0542a6e8.chunk.js.map": "/react-sorting-hat/static/js/2.0542a6e8.chunk.js.map",
+    "index.html": "/react-sorting-hat/index.html",
+    "precache-manifest.d2c2736963b1e5a54ffbb363bb504943.js": "/react-sorting-hat/precache-manifest.d2c2736963b1e5a54ffbb363bb504943.js",
+    "service-worker.js": "/react-sorting-hat/service-worker.js",
+    "static/css/main.63a40524.chunk.css.map": "/react-sorting-hat/static/css/main.63a40524.chunk.css.map",
+    "static/media/gryffindor-crest.png": "/react-sorting-hat/static/media/gryffindor-crest.3efe6c36.png",
+    "static/media/hufflepuff-crest.png": "/react-sorting-hat/static/media/hufflepuff-crest.db5ee7e3.png",
+    "static/media/ravenclaw-crest.png": "/react-sorting-hat/static/media/ravenclaw-crest.8f9cd239.png",
+    "static/media/slytherin-crest.png": "/react-sorting-hat/static/media/slytherin-crest.43c52107.png",
+    "static/media/the_sorting_hat_by_sahinduezguen.png": "/react-sorting-hat/static/media/the_sorting_hat_by_sahinduezguen.7243f6fa.png"
+  }
+}
