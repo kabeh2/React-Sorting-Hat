@@ -21,7 +21,7 @@ const initialState = {
     6: false
   },
   showResults: false,
-  mode: "desktop"
+  mode: "mobile"
 };
 
 class App extends Component {

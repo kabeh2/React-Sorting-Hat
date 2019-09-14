@@ -18,7 +18,7 @@ const Welcome = React.forwardRef(
               ref={ref}
               onClick={onClick}
             >
-              <h2>Click to Find Out Your House...</h2>
+              <h2>Find Out Your House...</h2>
             </button>
           </Link>
         </div>
