@@ -2,7 +2,7 @@
   "name": "react-sorting-hat",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://kabeh2.github.io/react-sorting-hat/",
+  "homepage": "https://kabeh2.github.io/React-Sorting-Hat/",
   "dependencies": {
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
