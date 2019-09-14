@@ -53,6 +53,11 @@ a {
   }
 }
 
+.sorting-hat--container {
+  display: flex;
+  flex-direction: column;
+}
+
 .sorting-hat {
   // cursor: pointer;
   width: 320px;
@@ -90,9 +95,17 @@ button {
 
   transition: all 0.2s ease;
 
+  h2 {
+    color: goldenrod;
+  }
+
   &:hover {
     background-color: goldenrod !important;
     color: #fff;
+
+    h2 {
+      color: #fff;
+    }
   }
 }
 

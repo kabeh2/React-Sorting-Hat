@@ -2,7 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 
 const Welcome = React.forwardRef(
-  ({ onMouseEnter, onMouseLeave, hat, location, onClick }, ref) => {
+  ({ onMouseEnter, onMouseLeave, hat, location, onClick, mode }, ref) => {
     return (
       <div className="welcome-container">
         <h1>Welcome to the Great Hall of Hogwarts!</h1>
@@ -13,7 +13,11 @@ const Welcome = React.forwardRef(
         >
           <img className="sorting-hat" src={hat} alt="Sorting Hat" />
           <Link to={`/questions/${location.key}`}>
-            <button className="exitRef btn" ref={ref} onClick={onClick}>
+            <button
+              className={mode === "mobile" ? "btn" : "exitRef btn"}
+              ref={ref}
+              onClick={onClick}
+            >
               <h2>Click to Find Out Your House...</h2>
             </button>
           </Link>

@@ -20,7 +20,8 @@ const initialState = {
     5: false,
     6: false
   },
-  showResults: false
+  showResults: false,
+  mode: "desktop"
 };
 
 class App extends Component {
@@ -31,6 +32,10 @@ class App extends Component {
     };
     this.enterRef = React.createRef();
     this.appRef = React.createRef();
+  }
+
+  componentDidMount() {
+    this.updateDimensions();
   }
 
   handleHoverEnter = () => {
@@ -173,6 +178,28 @@ class App extends Component {
     this.appRef.current.classList = "App";
   };
 
+  updateDimensions() {
+    let w = window;
+    let d = document;
+    let documentElement = d.documentElement;
+    let body = d.getElementsByTagName("body")[0];
+    let width = w.innerWidth || documentElement.clientWidth || body.clientWidth;
+
+    let mode = "";
+
+    if (width <= 480) {
+      mode = "mobile";
+    } else if (width <= 768) {
+      mode = "tablet";
+    } else {
+      mode = "desktop";
+    }
+
+    this.setState({
+      mode: mode
+    });
+  }
+
   render() {
     const {
       questions,
@@ -191,8 +218,13 @@ class App extends Component {
               path="/welcome"
               render={props => (
                 <Welcome
-                  onMouseEnter={this.handleHoverEnter}
-                  onMouseLeave={this.handleHoverLeave}
+                  mode={this.state.mode}
+                  onMouseEnter={
+                    this.state.mode === "mobile" ? null : this.handleHoverEnter
+                  }
+                  onMouseLeave={
+                    this.state.mode === "mobile" ? null : this.handleHoverLeave
+                  }
                   hat={Hat}
                   ref={this.enterRef}
                   onClick={this.handleWelcomeClick}
