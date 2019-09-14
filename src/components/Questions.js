@@ -18,9 +18,9 @@ const Questions = ({ show, answers, onClick, onSubmit, onChange }) => {
             }
           >
             <ul className="answer-container">
-              {question.answers.map(answer => {
+              {question.answers.map((answer, index) => {
                 return (
-                  <li>
+                  <li key={index}>
                     <label>
                       <input
                         name="radioGroup"
